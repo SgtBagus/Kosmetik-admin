@@ -87,7 +87,7 @@ class Produk extends MY_Controller
             $status = 'ENABLE';
         }
         header('Content-Type: application/json');
-        $this->datatables->select('idProduk,user.name as idCreator,namaProduk,hargabProduk,hargajProduk,m_kategori.namaKategori as idKategori,m_produk.status');
+        $this->datatables->select('idProduk,user.name as idCreator,namaProduk,deskProduk,hargabProduk,hargajProduk,m_kategori.namaKategori as idKategori,m_produk.status');
         $this->datatables->where('m_produk.status', $status);
         $this->datatables->from('m_produk');
         $this->datatables->join('user', 'm_produk.idCreator = user.id', 'left');

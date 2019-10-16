@@ -7,6 +7,10 @@
     <input type="text" class="form-control" id="form-namaProduk" placeholder="Masukan Nama Produk" name="dt[namaProduk]" value="<?= $m_produk['namaProduk'] ?>">
   </div>
   <div class="form-group">
+    <label for="form-namaProduk">Deksiprsi Produk</label>
+    <textarea class="form-control" name="dt[deskProduk]"><?= $m_produk['deskProduk'] ?></textarea> 
+  </div>
+  <div class="form-group">
     <label for="form-hargabProduk">Harga Beli Produk</label>
     <input type="text" class="form-control" id="form-hargabProduk" placeholder="Masukan Harga Beli Produk" name="dt[hargabProduk]" value="<?= $m_produk['hargabProduk'] ?>">
   </div>

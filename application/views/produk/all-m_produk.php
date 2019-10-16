@@ -109,6 +109,7 @@
       '       <th style="width:20px">No</th>' + 
       '<th>Pembuat</th>' + 
       '<th>Nama</th>' + 
+      '<th>Deskripsi</th>' + 
       '<th>Harga Beli</th>' + 
       '<th>Harga Jual</th>' + 
       '<th>Kategori</th>' + 
@@ -153,6 +154,9 @@
           "data": "namaProduk"
         }, 
         {
+          "data": "deskProduk"
+        }, 
+        {
           "data": "hargabProduk"
         }, 
         {
@@ -174,7 +178,7 @@
       ],
       columnDefs: [
         {
-          targets: [6],
+          targets: [7],
           render: function(data, type, row, meta) {
             if (row['status'] == 'ENABLE') {
               var htmls = '<a href="<?= base_url('master/M_produk/status/') ?>' + row['idProduk'] + '/DISABLE">' +

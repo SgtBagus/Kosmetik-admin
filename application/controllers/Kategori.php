@@ -100,7 +100,7 @@ class Kategori extends MY_Controller
     {
         $data['m_kategori'] = $this->mymodel->selectDataone('m_kategori', array('idKategori' => $id));
         $data['file'] = $this->mymodel->selectDataone('file', array('table_id' => $id, 'table' => 'm_kategori'));
-        $data['page_name'] = "m_kategori";
+        $data['page_name'] = "Kategori";
         $this->load->view('kategori/edit-m_kategori', $data);
     }
 
