@@ -1,12 +1,8 @@
-<form method="POST" action="<?= base_url('admin/stock/update') ?>" id="upload-create" enctype="multipart/form-data">
+<form method="POST" action="<?= base_url('stock/update') ?>" id="upload-create" enctype="multipart/form-data">
   <input type="hidden" name="idStok" value="<?= $produk_stok['idStok'] ?>">
   <div class="show_error"></div>
   <div class="form-group">
-    <label for="form-idCreator">IdCreator</label>
-    <input type="text" class="form-control" id="form-idCreator" placeholder="Masukan IdCreator" name="dt[idCreator]" value="<?= $produk_stok['idCreator'] ?>">
-  </div>
-  <div class="form-group">
-    <label for="form-idProduk">Id Produk</label>
+    <label for="form-idProduk">Produk</label>
     <select name="dt[idProduk]" class="form-control select2">
       <?php
       $m_produk = $this->mymodel->selectWhere('m_produk', null);
@@ -26,7 +22,10 @@
   </div>
   <div class="form-group">
     <label for="form-statusStok">Status Stok</label>
-    <input type="text" class="form-control" id="form-statusStok" placeholder="Masukan Status Stok" name="dt[statusStok]" value="<?= $produk_stok['statusStok'] ?>">
+    <select name="dt[statusStok]" class="form-control select2">
+      <option value="TERSEDIA" <?php if($produk_stok["statusStok"] == "TERSEDIA"){ echo "selected"; } ?>>TERSEDIA</option>
+      <option value="TERJUAL" <?php if($produk_stok["statusStok"] == "TERJUAL"){ echo "selected"; } ?>>TERJUAL</option>
+    </select>
   </div>
   <hr>
   <button type="submit" class="btn btn-primary btn-send"><i class="fa fa-save"></i> Save</button>

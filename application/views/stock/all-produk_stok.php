@@ -110,10 +110,10 @@
       '     <thead>' +
       '     <tr class="bg-success">' +
       '       <th style="width:20px">No</th>' +
-      '<th>IdCreator</th>' +
-      '<th>IdProduk</th>' +
-      '<th>KodeBarang</th>' +
-      '<th>StatusStok</th>' +
+      '<th>Pembuat</th>' +
+      '<th>Produk</th>' +
+      '<th>Kode Barang</th>' +
+      '<th>Status Stok</th>' +
       '       <th style="width:150px">Status</th>' +
       '       <th style="width:150px"></th>' +
       '     </tr>' +
@@ -170,6 +170,16 @@
         [1, 'asc']
       ],
       columnDefs: [{
+        targets: [4],
+        render: function(data, type, row, meta) {
+          if (row['statusStok'] == 'TERSEDIA') {
+            var htmls = '<div align="center"><span class="label bg-blue">TERSEDIA</span></div>';
+          } else {
+            var htmls = '<div align="center"><span class="label bg-red">TERJUAL</span></div>';
+          }
+          return htmls;
+        }
+      }, {
         targets: [5],
         render: function(data, type, row, meta) {
           if (row['status'] == 'ENABLE') {

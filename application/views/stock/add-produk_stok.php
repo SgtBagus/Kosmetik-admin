@@ -1,11 +1,7 @@
 <form method="POST" action="<?= base_url('stock/store') ?>" id="upload-create" enctype="multipart/form-data">
     <div class="show_error"></div>
     <div class="form-group">
-        <label for="form-idCreator">Id Creator</label>
-        <input type="text" class="form-control" id="form-idCreator" placeholder="Masukan IdCreator" name="dt[idCreator]">
-    </div>
-    <div class="form-group">
-        <label for="form-idProduk">Id Produk</label>
+        <label for="form-idProduk">Produk</label>
         <select name="dt[idProduk]" class="form-control select2">
             <?php
             $m_produk = $this->mymodel->selectWhere('m_produk', null);
@@ -18,10 +14,6 @@
     <div class="form-group">
         <label for="form-kodeBarang">Kode Barang</label>
         <input type="text" class="form-control" id="form-kodeBarang" placeholder="Masukan Kode Barang" name="dt[kodeBarang]">
-    </div>
-    <div class="form-group">
-        <label for="form-statusStok">Status Stok</label>
-        <input type="text" class="form-control" id="form-statusStok" placeholder="Masukan Status Stok" name="dt[statusStok]">
     </div>
     <hr>
     <button type="submit" class="btn btn-primary btn-send"><i class="fa fa-save"></i> Save</button>

@@ -20,10 +20,8 @@ class Stock extends MY_Controller
 	public function validate()
 	{
 		$this->form_validation->set_error_delimiters('<li>', '</li>');
-		$this->form_validation->set_rules('dt[idCreator]', '<strong>IdCreator</strong>', 'required');
 		$this->form_validation->set_rules('dt[idProduk]', '<strong>IdProduk</strong>', 'required');
 		$this->form_validation->set_rules('dt[kodeBarang]', '<strong>KodeBarang</strong>', 'required');
-		$this->form_validation->set_rules('dt[statusStok]', '<strong>StatusStok</strong>', 'required');
 	}
 
 	public function store()
@@ -33,8 +31,12 @@ class Stock extends MY_Controller
 			$this->alert->alertdanger(validation_errors());
 		} else {
 			$dt = $_POST['dt'];
+			$dt['idCreator'] = $this->session->userdata('id');
+			$dt['statusStok'] = 'TERSEDIA';
 			$dt['created_at'] = date('Y-m-d H:i:s');
 			$dt['status'] = "ENABLE";
+
+			$this->db->insert('produk_stok', $dt);
 			$this->alert->alertsuccess('Success Send Data');
 		}
 	}
@@ -46,9 +48,12 @@ class Stock extends MY_Controller
 			$status = 'ENABLE';
 		}
 		header('Content-Type: application/json');
-		$this->datatables->select('idStok,idCreator,idProduk,kodeBarang,statusStok,status');
-		$this->datatables->where('status', $status);
-		$this->datatables->from('produk_stok');
+		
+		$this->datatables->select('a.idStok,c.name as idCreator,b.namaProduk as idProduk,a.kodeBarang,a.statusStok,a.status');
+		$this->datatables->join('m_produk b', 'a.idProduk=b.idProduk', 'inner');
+		$this->datatables->join('user c', 'a.idCreator=c.id', 'inner');
+		$this->datatables->where('a.status', $status);
+		$this->datatables->from('produk_stok a');
 		if ($status == "ENABLE") {
 			$this->datatables->add_column('view', '<div class="btn-group"><button type="button" class="btn btn-sm btn-primary" onclick="edit($1)"><i class="fa fa-pencil"></i> Edit</button></div>', 'idStok');
 		} else {
