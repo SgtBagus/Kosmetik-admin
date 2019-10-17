@@ -183,11 +183,11 @@
         targets: [5],
         render: function(data, type, row, meta) {
           if (row['status'] == 'ENABLE') {
-            var htmls = '<a href="<?= base_url('master/Produk_stok/status/') ?>' + row['idStok'] + '/DISABLE">' +
+            var htmls = '<a href="<?= base_url('stock/status/') ?>' + row['idStok'] + '/DISABLE">' +
               '    <button type="button" class="btn btn-sm btn-sm btn-success"><i class="fa fa-home"></i> ENABLE</button>' +
               '</a>';
           } else {
-            var htmls = '<a href="<?= base_url('master/Produk_stok/status/') ?>' + row['idStok'] + '/ENABLE">' +
+            var htmls = '<a href="<?= base_url('stock/status/') ?>' + row['idStok'] + '/ENABLE">' +
               '    <button type="button" class="btn btn-sm btn-sm btn-danger"><i class="fa fa-home"></i> DISABLE</button>' +
               '</a>';
           }
