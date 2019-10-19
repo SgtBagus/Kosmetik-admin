@@ -338,31 +338,6 @@ if ($this->session->userdata('session_sop') == "") {
             return i;
         }
 
-        /* Fungsi formatRupiah */
-        function fungsiRupiah() {
-            $(".rupiah").keyup(function() {
-                $(this).val(formatRupiah(this.value, ''));
-            });
-
-            function formatRupiah(angka, prefix) {
-                var number_string = angka.replace(/[^,\d]/g, '').toString(),
-                    split = number_string.split(','),
-                    sisa = split[0].length % 3,
-                    rupiah = split[0].substr(0, sisa),
-                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-                if (ribuan) {
-                    separator = sisa ? '.' : '';
-                    rupiah += separator + ribuan.join('.');
-                }
-
-                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-                return prefix == undefined ? rupiah : (rupiah ? '' + rupiah : '');
-            }
-        }
-
-        fungsiRupiah();
-
         function maskRupiah(angka) {
             var bilangan = angka;
 
@@ -371,6 +346,27 @@ if ($this->session->userdata('session_sop') == "") {
             ribuan = ribuan.join('.').split('').reverse().join('');
             return ribuan;
         }
+
+
+        $("#btnFile").click(function() {
+            document.getElementById('imageFile').click();
+        });
+
+        $("#imageFile").change(function() {
+            imagePreview(this);
+        });
+
+        function imagePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#preview_image').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
     </script>
 </body>
 

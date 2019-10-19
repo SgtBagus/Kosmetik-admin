@@ -173,9 +173,9 @@
         targets: [4],
         render: function(data, type, row, meta) {
           if (row['statusStok'] == 'TERSEDIA') {
-            var htmls = '<div align="center"><span class="label bg-blue">TERSEDIA</span></div>';
+            var htmls = '<div align="center"><span class="label bg-green">TERSEDIA</span></div>';
           } else {
-            var htmls = '<div align="center"><span class="label bg-red">TERJUAL</span></div>';
+            var htmls = '<div align="center"><span class="label bg-yellow">TERJUAL</span></div>';
           }
           return htmls;
         }

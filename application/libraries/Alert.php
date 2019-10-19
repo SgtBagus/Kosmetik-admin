@@ -33,7 +33,7 @@ class Alert extends CI_Controller  {
 		echo '	</button>';
 		echo '	<h5 class="alert-heading">Berhasil</h5>';
 		echo '		<ul>';
-		echo "			<li>Investasi Di Terima</li>";
+		echo "			<li>Pembayaran Di Terima</li>";
 		echo '		</ul>';
 		echo '</div>';
 	}
@@ -47,7 +47,7 @@ class Alert extends CI_Controller  {
 		echo '	</button>';
 		echo '	<h5 class="alert-heading">Perhatian !</h5>';
 		echo '		<ul>';
-		echo "			<li>Investasi Di Tolak</li>";
+		echo "			<li>Pembayaran Di Tolak</li>";
 		echo '		</ul>';
 		echo '</div>';
 	}
